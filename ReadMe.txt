@@ -6,3 +6,4 @@ DB 뿐만아니라 랭킹을 위해 Redis서버를 별도로 사용하였으며 
 
 어플리케이션의 경우 Assets/Common/Script/WWWManager.cs 클래스의 serverIp 멤버변수에
 유효한 서버주소를 넣어주셔야 합니다.
+-made by tkqlzz
