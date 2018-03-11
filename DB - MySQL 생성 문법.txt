@@ -1,0 +1,35 @@
+CREATE DATABASE `Minigames` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+CREATE TABLE `ITEM_INFO` (
+  `item_id` int(3) unsigned zerofill NOT NULL,
+  `category` int(11) NOT NULL COMMENT '0 : 점수관련\n1 : 타이머관련\n....',
+  `name` varchar(45) NOT NULL,
+  `explain` varchar(45) DEFAULT NULL,
+  `price` int(11) NOT NULL,
+  `effect` int(11) NOT NULL,
+  PRIMARY KEY (`item_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='상점에서 아이템의 정보들을 저장하기 위한 테이블';
+
+CREATE TABLE `USER_INFO` (
+  `user_id` varchar(45) CHARACTER SET utf8 NOT NULL,
+  `password` varchar(45) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(45) CHARACTER SET utf8 NOT NULL,
+  `email` varchar(45) CHARACTER SET utf8 DEFAULT NULL,
+  `total_score` int(11) NOT NULL,
+  `star_point` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='유저의 개인정보들을 저장하기 위한 테이블';
+
+CREATE TABLE `USER_ITEM` (
+  `user_id` varchar(45) NOT NULL,
+  `item_id` int(3) unsigned zerofill NOT NULL,
+  `point` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`,`item_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='유저가 가지고 있는 아이템의 개수를 저장하기 위한 테이블';
+
+CREATE TABLE `USER_SCORE` (
+  `user_id` varchar(45) NOT NULL,
+  `game_name` varchar(45) NOT NULL,
+  `score` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`,`game_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='유저의 미니게임별 점수를 저장하기 위한 테이블';
